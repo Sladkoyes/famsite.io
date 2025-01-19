@@ -1,4 +1,4 @@
-<script src="{{ url_for('static',filename='js/jquery-3.3.1.min.js') }}"></script>
+
 const modal = document.getElementById('modal');
 const accessCodeInput = document.getElementById('accessCode');
 const submitCodeBtn = document.getElementById('submitCode');
