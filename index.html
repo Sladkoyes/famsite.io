@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Информация о человеке</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Модальное окно для ввода кода -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+        
+
+            <input type="text" id="accessCode" placeholder="Введите код" class="access-code" title="Введите код, чтобы продолжить">
+            <button id="submitCode" title="Нажмите, чтобы войти">Войти</button>
+            <p id="incorrectCodeMessage" class="incorrect-code-message">Неверный код, попробуйте снова.</p>
+        </div>
+    </div>
+
+    <!-- Статус запроса -->
+    <div id="statusMessage" class="status-message">
+        <div class="status-content">
+            <div class="status-text">Отправка запроса...</div>
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div id="mainContent" class="background" style="display:none;">
+        <div class="container">
+            <h1>Информация о человеке</h1>
+            <p class="description">Введите имя, чтобы узнать информацию о человеке!</p>
+
+            <div class="input-wrapper">
+                <input list="names" id="nameInput" placeholder="Введите имя..." autocomplete="off" title="Выберите имя из списка или введите свое">
+                <datalist id="names">
+                    <option value="Hrach Dadayan">
+                    <option value="Anna Ivanova">
+                    <option value="Viktor Sidorov">
+                    <option value="Maria Petrovna">
+                    <option value="Alexey Zaitsev">
+                </datalist>
+                <button id="submitBtn" title="Нажмите, чтобы показать информацию">Показать информацию</button>
+            </div>
+
+            <div id="infoContainer" class="info-container"></div>
+            <div id="loadingInfo" class="loading-info">Загружается...</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

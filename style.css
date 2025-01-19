@@ -1,0 +1,521 @@
+/* Сброс стандартных стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Основной стиль для страницы */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(45deg, #ff6a00, #ee0979);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow: hidden;
+    transition: background 0.5s ease, color 0.5s ease;
+    animation: backgroundAnimation 15s ease-in-out infinite;
+}
+
+/* Фоновая анимация */
+@keyframes backgroundAnimation {
+    0% {
+        background: linear-gradient(45deg, #ff6a00, #ee0979);
+    }
+    50% {
+        background: linear-gradient(45deg, #f24a72, #a1a8f1);
+    }
+    100% {
+        background: linear-gradient(45deg, #ff6a00, #ee0979);
+    }
+}
+
+/* Контейнер для контента */
+.container {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    animation: fadeInContainer 1s forwards;
+}
+
+/* Плавное появление контейнера */
+@keyframes fadeInContainer {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Заголовок */
+h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ff6347;
+}
+
+/* Подсказка под заголовком */
+.description {
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: 300;
+    color: #d3d3d3;
+}
+
+/* Оформление поля ввода и кнопки */
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeInInput 1s ease-in-out forwards;
+}
+
+@keyframes fadeInInput {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+input {
+    padding: 15px 25px;
+    font-size: 22px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 20px;
+    outline: none;
+    transition: 0.3s;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+input:focus {
+    border: 2px solid #ff6347;
+    box-shadow: 0 0 10px rgba(255, 99, 71, 0.5);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;
+    max-width: 500px;
+}
+
+button:hover {
+    background-color: #e55342;
+    transform: scale(1.05);
+}
+
+/* Контейнер для вывода информации */
+.info-container {
+    margin-top: 40px;
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Анимация для появления текста */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стиль для индивидуальных данных */
+.info-container .name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.info-container .details {
+    font-size: 22px;
+    color: #f0f0f0;
+    line-height: 1.5;
+}
+
+/* Модальное окно */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    transition: background 0.3s ease;
+}
+
+/* Сообщение об ошибке при неверном коде */
+.incorrect-code-message {
+    color: red;
+    font-size: 14px;
+    display: none;
+}
+
+/* Стиль для ползунка темы */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* Для ползунка */
+.theme-switch {
+    width: 50px;
+    height: 24px;
+    position: relative;
+    appearance: none;
+    background-color: #ccc;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Для ползунка в темной теме */
+.theme-switch:checked {
+    background-color: #4caf50;
+}
+
+.theme-switch:checked + .theme-label {
+    transform: translateX(26px);
+}
+
+.theme-label {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+/* Загрузка */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    border: 8px solid rgba(255, 255, 255, 0.3);
+    border-top: 8px solid #ff6347;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/* Сброс стандартных стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Основной стиль для страницы */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(45deg, #ff6a00, #ee0979);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow: hidden;
+    transition: background 0.5s ease, color 0.5s ease;
+    animation: backgroundAnimation 15s ease-in-out infinite;
+}
+
+/* Фоновая анимация */
+@keyframes backgroundAnimation {
+    0% {
+        background: linear-gradient(45deg, #ff6a00, #ee0979);
+    }
+    50% {
+        background: linear-gradient(45deg, #f24a72, #a1a8f1);
+    }
+    100% {
+        background: linear-gradient(45deg, #ff6a00, #ee0979);
+    }
+}
+
+/* Модальное окно */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    transition: background 0.3s ease;
+}
+
+.code-instruction {
+    font-size: 18px;
+    color: #000;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* Статус запроса */
+.status-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.status-content {
+    text-align: center;
+    background: #fff;
+    border-radius: 10px;
+    padding: 40px;
+    width: 300px;
+}
+
+.status-text {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.loader {
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid #ff6347;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Зеленое окно "Подтверждено" */
+.approved-message {
+    background-color: #28a745;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    display: none;
+    font-size: 22px;
+}
+
+.container {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    animation: fadeInContainer 1s forwards;
+}
+
+/* Плавное появление контейнера */
+@keyframes fadeInContainer {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стиль загрузки информации */
+.loading-info {
+    font-size: 20px;
+    color: #ff6347;
+    margin-top: 20px;
+    display: none;
+}
+
+/* Для поля ввода и кнопок */
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Стиль для информации */
+.info-container {
+    margin-top: 40px;
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Сброс стандартных стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Основной стиль для страницы */
+body {
+    font-family: 'Roboto', sans-serif; /* Устанавливаем шрифт Roboto для всего текста на странице */
+    background: linear-gradient(45deg, #ff6a00, #ee0979);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow: hidden;
+    transition: background 0.5s ease, color 0.5s ease;
+    animation: backgroundAnimation 15s ease-in-out infinite;
+}
+
+/* Заголовки с использованием шрифта Oswald */
+h1, h2, h3 {
+    font-family: 'Oswald', sans-serif; /* Устанавливаем шрифт Oswald для заголовков */
+    font-weight: 600;
+}
+
+/* Статус и другие сообщения */
+.status-text {
+    font-family: 'Oswald', sans-serif; /* Шрифт Oswald для текста статуса */
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Другие элементы тоже могут быть настроены с другим шрифтом */
+.code-instruction {
+    font-family: 'Oswald', sans-serif; /* Шрифт Oswald для инструкций */
+    font-size: 18px;
+    color: #000;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* Задание шрифта для обычного текста */
+p, .info-container {
+    font-family: 'Roboto', sans-serif;
+}
+
+button {
+    font-family: 'Oswald', sans-serif; /* Освежаем кнопку с шрифтом Oswald */
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
